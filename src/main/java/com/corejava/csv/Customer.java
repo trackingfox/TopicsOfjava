@@ -1,6 +1,6 @@
 package com.corejava.csv;
 
-public class CustomerDb {
+public class Customer {
 
 	private String CustomerNumber, CustomerName, ContactLastName, ContactFirstName, Phone, AddressLine1, AddressLine2,
 			City, State, PostalCode, SalesRepoEmployeeNumber, CreditLimit;

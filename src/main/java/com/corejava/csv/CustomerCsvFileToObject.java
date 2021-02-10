@@ -13,7 +13,7 @@ import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 
 public class CustomerCsvFileToObject {
 
-	public List<CustomerDb> CustomercsvToclass() {
+	public List<Customer> CustomercsvToclass() {
 
 		// CustomerNumber, CustomerName, ContactLastName, ContactFirstName,Phone,
 		// AddressLine1,
@@ -41,8 +41,8 @@ public class CustomerCsvFileToObject {
 
 		// HeaderColumnNameTranslateMappingStrategy
 		// for Country class
-		HeaderColumnNameTranslateMappingStrategy<CustomerDb> strategy = new HeaderColumnNameTranslateMappingStrategy<CustomerDb>();
-		strategy.setType(CustomerDb.class);
+		HeaderColumnNameTranslateMappingStrategy<Customer> strategy = new HeaderColumnNameTranslateMappingStrategy<Customer>();
+		strategy.setType(Customer.class);
 		strategy.setColumnMapping(mapper);
 
 		// csvReader
@@ -59,8 +59,8 @@ public class CustomerCsvFileToObject {
 		CsvToBean csvBean = new CsvToBean();
 
 		// call the parse method
-		List<CustomerDb> customerlist = csvBean.parse(strategy, csvReader);
-		for (CustomerDb customerDb : customerlist) {
+		List<Customer> customerlist = csvBean.parse(strategy, csvReader);
+		for (Customer customerDb : customerlist) {
 			System.out.println(customerDb);
 
 		}
@@ -70,7 +70,7 @@ public class CustomerCsvFileToObject {
 
 	@Test
 	public void CustomerDetals() {
-		List<CustomerDb> custlist = CustomercsvToclass();
+		List<Customer> custlist = CustomercsvToclass();
 
 	}
 
