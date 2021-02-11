@@ -1,11 +1,10 @@
 package com.corejava.csv;
 
-public class Customer {
+public class CustomerTemp {
 
 	private int CustomerNumber;
 	private String CustomerName, ContactLastName, ContactFirstName, Phone, AddressLine1, AddressLine2, City, State,
-			PostalCode, Country;
-	private Integer SalesRepoEmployeeNumber;
+			PostalCode, Country, SalesRepoEmployeeNumber;
 	private float CreditLimit;
 
 	public int getCustomerNumber() {
@@ -96,11 +95,11 @@ public class Customer {
 		Country = country;
 	}
 
-	public Integer getSalesRepoEmployeeNumber() {
+	public String getSalesRepoEmployeeNumber() {
 		return SalesRepoEmployeeNumber;
 	}
 
-	public void setSalesRepoEmployeeNumber(Integer salesRepoEmployeeNumber) {
+	public void setSalesRepoEmployeeNumber(String salesRepoEmployeeNumber) {
 		SalesRepoEmployeeNumber = salesRepoEmployeeNumber;
 	}
 
