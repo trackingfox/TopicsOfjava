@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -80,6 +81,44 @@ public class CustomerCsvFileToObject {
 		List<Customer> custlist2 = new ArrayList<Customer>();
 		for (CustomerTemp cust : custlist) {
 			// 3.convert customertemp list to customer list
+			Customer cust2 = new Customer();
+
+			Integer a = cust.getSalesRepoEmployeeNumber().equals("") ? null
+					: Integer.parseInt(cust.getSalesRepoEmployeeNumber());
+			cust2.setSalesRepoEmployeeNumber(a);
+
+			cust2.setCustomerName(cust.getCustomerName());
+
+			int b = Integer.valueOf(cust.getCustomerNumber());
+			cust2.setCustomerNumber(b);
+
+			cust2.setAddressLine1(cust.getAddressLine1());
+			cust2.setAddressLine2(cust.getAddressLine2());
+			cust2.setContactFirstName(cust.getContactFirstName());
+			cust2.setContactLastName(cust.getContactLastName());
+			cust2.setCountry(cust.getCountry());
+
+			Float c = Float.valueOf(cust.getCreditLimit());
+			cust2.setCreditLimit(c);
+
+			cust2.setPhone(cust.getPhone());
+			cust2.setPostalCode(cust.getPostalCode());
+			cust2.setState(cust.getState());
+			cust2.setCity(cust.getCity());
+
+			custlist2.add(cust2);
+		}
+
+//		for (Customer customer : custlist2) {
+//			System.out.println(customer);
+//
+//		}
+		// 1.convert customertemp list to customer list using interface
+
+		// 2 convert customertemp list to customer list using stream
+
+		List<Customer> custlist1 = new ArrayList<Customer>();
+		custlist1 = custlist.stream().map(cust -> {
 
 			Customer cust2 = new Customer();
 
@@ -88,15 +127,31 @@ public class CustomerCsvFileToObject {
 			cust2.setSalesRepoEmployeeNumber(a);
 
 			cust2.setCustomerName(cust.getCustomerName());
-			custlist2.add(cust2);
+
+			int b = Integer.valueOf(cust.getCustomerNumber());
+			cust2.setCustomerNumber(b);
+
+			cust2.setAddressLine1(cust.getAddressLine1());
+			cust2.setAddressLine2(cust.getAddressLine2());
+			cust2.setContactFirstName(cust.getContactFirstName());
+			cust2.setContactLastName(cust.getContactLastName());
+			cust2.setCountry(cust.getCountry());
+
+			Float c = Float.valueOf(cust.getCreditLimit());
+			cust2.setCreditLimit(c);
+
+			cust2.setPhone(cust.getPhone());
+			cust2.setPostalCode(cust.getPostalCode());
+			cust2.setState(cust.getState());
+			cust2.setCity(cust.getCity());
+
+			return cust2;
+		}).collect(Collectors.toList());
+
+		for (Customer customer : custlist1) {
+			System.out.println(customer);
+
 		}
 
-		for (Customer customer : custlist2) {
-			System.out.println("abc" + customer);
-
-		}
-		// 1.convert customertemp list to customer list using interface
-		// 2 convert customertemp list to customer list using stream
 	}
-
 }
